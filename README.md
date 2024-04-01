@@ -39,7 +39,7 @@ Highly video, feature-packed flutter_pull_up_down_refresh widget for Flutter.
 
 ## Usage
 
-Make sure to check out [examples](https://github.com/kdrtech/flutter_pull_up_down_refresh/tree/master/example/lib) and [API docs](https://pub.dev/documentation/table_calendar/latest/) for more details.
+Make sure to check out [examples](https://github.com/kdrtech/flutter_pull_up_down_refresh/tree/master/example/lib)
 
 ### Installation
 
