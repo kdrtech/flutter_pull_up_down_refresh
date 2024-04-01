@@ -47,7 +47,7 @@ Add the following line to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_pull_up_down_refresh: ^1.0.0
+  flutter_pull_up_down_refresh: ^1.0.2
 ```
 
 ### Basic setup
