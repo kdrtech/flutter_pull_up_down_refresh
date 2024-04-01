@@ -15,7 +15,7 @@ and the Flutter guide for
 
 [![Pub Package](https://img.shields.io/pub/v/table_calendar.svg?style=flat-square)]()
 
-<a href="https://www.buymeacoffee.com/kdrtech">
+<a target="_blank" href="https://www.buymeacoffee.com/kdrtech">
  <img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" height="41" />
  </a>
  
