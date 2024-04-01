@@ -123,13 +123,13 @@ class FlutterPullUpDownRefreshExampleState
                         width: 100,
                         height: 100,
                         child: Image.network(
-                            'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR83JIYLcgFML0SMBd_K1EQGlsPCLLt7hog6CKFG1IRYA&s',
+                            'https://static.vecteezy.com/system/resources/thumbnails/003/558/840/small_2x/3d-realistic-product-display-with-light-neon-ring-background-free-vector.jpg',
                             fit: BoxFit.cover),
                       ),
                     ),
-                    const Expanded(
+                    Expanded(
                       child: Padding(
-                        padding: EdgeInsets.only(
+                        padding: const EdgeInsets.only(
                           left: 20,
                           right: 20,
                         ),
@@ -139,31 +139,31 @@ class FlutterPullUpDownRefreshExampleState
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              "Android Small Removable Sticker Sheet",
+                              "${lists[index].name}",
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.black87,
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsets.only(top: 15, bottom: 5),
+                              padding: const EdgeInsets.only(top: 15, bottom: 5),
                               child: Text(
-                                'sfd',
+                                 "${lists[index].category}",
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
-                                style: TextStyle(
+                                style: const TextStyle(
                                   color: Colors.grey,
                                   fontWeight: FontWeight.normal,
                                 ),
                               ),
                             ),
                             Text(
-                              "\$51.99",
+                              "\$${lists[index].price}",
                               maxLines: 1,
                               overflow: TextOverflow.ellipsis,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: Colors.green,
                                 fontWeight: FontWeight.normal,
                               ),
