@@ -19,9 +19,27 @@ class FlutterPullUpDownRefreshExampleState
     extends State<FlutterPullUpDownRefreshExample> {
   bool isLoading = false;
   bool isRefresh = true;
+  bool isBottom = false;
+
   List<Product> lists = [];
   int startIndex = 0;
-  int endIndex = 10;
+  int endIndex = 5;
+
+  Future pullRefresh() async {
+    isLoading = true;
+    setState(() {});
+    startIndex = 0;
+    endIndex = 5;
+    var data = await FileManager.share.readJson(fileName: "data.json");
+    var list = (data as List).map((e) => Product.fromJson(e)).toList();
+    var sub = list.sublist(startIndex, endIndex);
+    await Future.delayed(const Duration(seconds: 1));
+    lists = [];
+    lists.addAll(sub);
+    isLoading = false;
+    isRefresh = false;
+    setState(() {});
+  }
 
   Future listItem() async {
     var data = await FileManager.share.readJson(fileName: "data.json");
@@ -34,10 +52,17 @@ class FlutterPullUpDownRefreshExampleState
     lists.addAll(sub);
     isLoading = false;
     isRefresh = false;
+    isBottom = false;
     setState(() {
       startIndex = endIndex;
       endIndex += 5;
     });
+  }
+
+  @override
+  void initState() {
+    listItem();
+    super.initState();
   }
 
   @override
@@ -46,18 +71,22 @@ class FlutterPullUpDownRefreshExampleState
       scrollController: ScrollController(),
       showRefreshIndicator: true,
       refreshIndicatorColor: Colors.red,
-      isLoading: false,
+      isLoading: isLoading,
       loadingColor: Colors.red,
       loadingBgColor: Colors.grey.withAlpha(100),
       onRefresh: () async {
         //Start refresh
-        await listItem();
+        await pullRefresh();
         //End refresh
       },
       onAtBottom: (status) {
         if (status) {
           if (kDebugMode) {
             print("Scroll at bottom");
+            if (!isBottom) {
+              isBottom = true;
+              listItem();
+            }
           }
         }
       },
