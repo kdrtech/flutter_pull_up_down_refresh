@@ -21,7 +21,7 @@ and the Flutter guide for
 
 Highly video, feature-packed flutter_pull_up_down_refresh widget for Flutter.
 
-| ![Image](https://raw.githubusercontent.com/kdrtech/flutter_pull_up_down_refresh/master/example/assets/dummy/flutter_pull_up_down_refresh.gif)
+| ![Image](https://raw.githubusercontent.com/kdrtech/flutter_pull_up_down_refresh/master/example/assets/dummy/screen-v1.0.4.gif)
 | :------------: |
 | **flutter_pull_up_down_refresh** |
 
@@ -36,6 +36,9 @@ Highly video, feature-packed flutter_pull_up_down_refresh widget for Flutter.
 * Change loading color
 * Change background loading color
 * Change refresh indicator Color 
+* Show bottom loading.
+* Scale  bottom loading size.
+* change color loading option.
 
 ## Usage
 
@@ -47,7 +50,7 @@ Add the following line to `pubspec.yaml`:
 
 ```yaml
 dependencies:
-  flutter_pull_up_down_refresh: ^1.0.3
+  flutter_pull_up_down_refresh: ^1.0.4
 ```
 
 ### Basic setup
@@ -62,6 +65,9 @@ FlutterPullUpDownRefresh(
       isLoading: isLoading,
       loadingColor: Colors.red,
       loadingBgColor: Colors.grey.withAlpha(100),
+      isBootomLoading: isBottom,
+      bottomLoadingColor: Colors.green,
+      scaleBottomLoading: 0.6,
       onRefresh: () async {
         //Start refresh
         await pullRefresh();

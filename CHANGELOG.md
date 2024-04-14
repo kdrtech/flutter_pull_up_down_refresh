@@ -13,3 +13,11 @@
 ## 1.0.3
 
 - Updated dark api documents.
+
+## 1.0.4
+
+- New feature : Show bottom loading.
+- New feature : Scale  bottom loading size.
+- New feature : change color loading option
+
+

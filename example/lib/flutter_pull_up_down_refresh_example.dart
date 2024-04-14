@@ -74,6 +74,9 @@ class FlutterPullUpDownRefreshExampleState
       isLoading: isLoading,
       loadingColor: Colors.red,
       loadingBgColor: Colors.grey.withAlpha(100),
+      isBootomLoading: isBottom,
+      bottomLoadingColor: Colors.green,
+      scaleBottomLoading: 0.6,
       onRefresh: () async {
         //Start refresh
         await pullRefresh();
@@ -85,6 +88,7 @@ class FlutterPullUpDownRefreshExampleState
             print("Scroll at bottom");
             if (!isBottom) {
               isBottom = true;
+              setState(() {});
               listItem();
             }
           }
@@ -148,9 +152,10 @@ class FlutterPullUpDownRefreshExampleState
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsets.only(top: 15, bottom: 5),
+                              padding:
+                                  const EdgeInsets.only(top: 15, bottom: 5),
                               child: Text(
-                                 "${lists[index].category}",
+                                "${lists[index].category}",
                                 maxLines: 1,
                                 overflow: TextOverflow.ellipsis,
                                 style: const TextStyle(

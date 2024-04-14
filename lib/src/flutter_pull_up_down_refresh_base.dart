@@ -21,8 +21,16 @@ class FlutterPullUpDownRefresh extends StatelessWidget {
   /// The value true, false
   final bool showRefreshIndicator;
 
+  // The [isBootomLoading] show bottom refresh.
+  ///
+  /// The value true, false
+  final bool isBootomLoading;
+
   /// The [loadingColor] change loading colors.
   final Color? loadingColor;
+
+  /// The [bottomLoadingColor] change bottom loading colors.
+  final Color? bottomLoadingColor;
 
   /// The [loadingBgColor] change backkground loading colors.
   final Color? loadingBgColor;
@@ -42,6 +50,9 @@ class FlutterPullUpDownRefresh extends StatelessWidget {
   /// The [scrollController] this for listen onAtTop function.
   final Function(bool)? onAtTop;
 
+  /// The [scaleBottomLoading] this for bottom refresh loading size.
+  final double? scaleBottomLoading;
+
   const FlutterPullUpDownRefresh({
     super.key,
     required this.scrollController,
@@ -49,8 +60,11 @@ class FlutterPullUpDownRefresh extends StatelessWidget {
     this.loadingColor,
     this.loadingBgColor,
     this.refreshIndicatorColor,
+    this.bottomLoadingColor,
     this.showRefreshIndicator = true,
     this.isLoading = false,
+    this.isBootomLoading = false,
+    this.scaleBottomLoading = 1,
     this.onRefresh,
     this.onAtBottom,
     this.onAtTop,
@@ -70,7 +84,10 @@ class FlutterPullUpDownRefresh extends StatelessWidget {
                       scrollController!.position.maxScrollExtent;
 
                   if (pixels >= maxScrollExtent - 5) {
+                    //if (!isBootomLoading) {
                     onAtBottom?.call(pixels > 0);
+                    //isBootomLoading = true;
+                    //}
                   } else if (pixels <= 0) {
                     onAtTop?.call(pixels <= 0);
                   }
@@ -100,6 +117,29 @@ class FlutterPullUpDownRefresh extends StatelessWidget {
                     ),
                   )
                 : child),
+      ),
+      Visibility(
+        visible: isBootomLoading,
+        child: Align(
+          alignment: Alignment.bottomCenter,
+          child: Card(
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(100),
+            ),
+            margin: EdgeInsets.only(bottom: 40),
+            color: Colors.white,
+            child: Padding(
+              padding: EdgeInsets.all(5),
+              child: Transform.scale(
+                scale: scaleBottomLoading,
+                child: CircularProgressIndicator(
+                  valueColor: AlwaysStoppedAnimation<Color>(
+                      bottomLoadingColor ?? Colors.blue),
+                ),
+              ),
+            ),
+          ),
+        ),
       ),
       Visibility(
         visible: isLoading,
